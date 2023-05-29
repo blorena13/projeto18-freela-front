@@ -1,8 +1,32 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import CardFollows from "../components/CardFollows";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { InfoContext } from "../context/InfoContext";
+import axios from "axios";
 
 export default function Follows() {
+
+    const [follows, setFollows] = useState([]);
+    const {token } = useContext(InfoContext);
+
+    // useEffect(() => {
+    //     const url = `${process.env.REACT_APP_API_URL}/me/:type`;
+    //     const config = {
+    //         headers:
+    //             { Authorization: `Bearer ${token}` }
+    //     }
+
+    //     const promise = axios.get(url, config);
+    //     promise.then((res) => {
+    //         setFollows(res.data);
+    //     })
+    //     promise.catch(err => console.log(err.response.data.mensagem));
+
+    // }, []);
+
     return (
         <Container>
             <Header />
@@ -22,15 +46,15 @@ justify-content: center;
 
 const FollowsContainer = styled.section`
 display: flex;
-background-color: pink;
 height: 100vh;
 align-items: center;
 flex-direction: column;
 width: 50%;
-
-p {
-    margin-top: 50px;
-}
+margin-top: 120px;
+font-family: 'Ubuntu', sans-serif;
+font-weight: 700;
+font-size: 35px;
+color: #ed344d;
 
 
 `

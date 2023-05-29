@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 
 export default function Users(){
+
+    const [follow, setFollow]= useState(false);
+    const [like, setLike] = useState(false);
     return (
 
         <UsersContainer>
@@ -14,8 +18,9 @@ export default function Users(){
                             <p>Fulano de tal</p>
                             <p>biografia</p>
 
-                            <div>
-                                <button>Seguir</button>
+                            <div> { 
+                            follow ? <button onClick={()=> setFollow(false)}>Seguindo</button>
+                             : <button onClick={()=> setFollow(true)}>Seguir</button>} 
                                 
                             </div>
 
@@ -27,7 +32,10 @@ export default function Users(){
                     <span>
                         <img />
                         <div> <p>
-                        <ion-icon name="heart-outline"></ion-icon>
+                            { 
+                            like ?  <ion-icon onClick={()=> setLike(true)} name="heart"></ion-icon> 
+                            : <ion-icon onClick={()=> setLike(false)} name="heart-outline"></ion-icon>}
+
                             curtir</p>
                             <p>hora e data</p>
                         </div>
@@ -41,34 +49,32 @@ export default function Users(){
 }
 
 const UsersContainer = styled.section`
-background-color: yellowgreen;
 height: 100%;
 display: flex;
 justify-content: center;
 `
 const FeedContainer = styled.div`
-background-color: blue;
 display: flex;
 flex-direction: column;
 align-items: center;
 height: 100vh;
 width: 40%;
-margin-top: 65px;
+margin-top: 90px;
 `
 const ProfileMe = styled.div`
+border: 1px solid #f5f5f5;
+background-color: #ed344d;
 display: flex;
 width: 100%;
-background-color: brown;
+border-radius: 5px;
 
 img{
     width: 80px;
-    background-color: red;
     border-radius: 50%;
 }
 span {
     display: flex;
     width: 100%;
-    background-color: pink;
     justify-content: space-between;
     padding: 20px;
     height: 70px;
@@ -80,20 +86,30 @@ div{
     width: 72%;
 
     p{
-        margin-bottom: 5px;
+        margin-bottom: 7px;
+        color: #FFFFFF;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 700;
+    }
+
+    p:nth-child(2){
+        font-size: 11px;
+    }
 
     }
 
-    
-
-div:nth-child(3) {
-    display: flex;
-    background-color: red;
-    flex-direction: row;
-    justify-content: space-between;
-}
-}
-
+    button {
+    border-radius: 50px;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #FFFFFF;
+    background-color: #ed344d;
+    border: 1px solid #FFFFFF;
+    width: 40%;
+    margin-top: 10px;
+ }
 `
 
 const Feed = styled.div`
@@ -105,9 +121,16 @@ span {
     display: flex;
     width: 100%;
     padding: 20px;
-    background-color: red;
+    background-color: #ed344d;
     flex-direction: column;
-  
+    border-radius: 5px;
+
+p{
+    font-size: 15px;
+    color: #FFFFFF;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
 
 }
 
@@ -115,6 +138,7 @@ img {
     width: 100%;
     height: 420px;
     background-color: pink;
+    border-radius: 5px;
 }
 
 div{
@@ -122,7 +146,23 @@ div{
     width: 100%;
     justify-content: space-between;
     margin-bottom: 20px;
+    margin-top: 5px;
+
+    p{
+        font-size: 15px;
+        color: #FFFFFF;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+        align-items: center;
+        display: flex;
+    }
+
    
+    ion-icon {
+        margin-right: 5px;
+        align-items: center;
+        font-size: 18px;
+    }
 }
 
 

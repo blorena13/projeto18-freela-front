@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import logo from "/home/lorena/projeto18-freela-front/src/assets/logo.png";
 
 export default function SignUp() {
 
@@ -29,7 +31,7 @@ export default function SignUp() {
         const body = {
             name: form.name, 
             email: form.email, 
-            image: form.image, 
+            profileImage: form.image, 
             bio: form.bio, 
             password: form.password
         };
@@ -47,7 +49,7 @@ export default function SignUp() {
     return (
 
         <SignUpContainer>
-            <p>Cadastro/ imagem da logo</p>
+            <img src={logo} />
             <form onSubmit={submitForm}>
                 <input
                     required
@@ -112,12 +114,13 @@ export default function SignUp() {
 }
 
 const SignUpContainer = styled.section`
-background-color: yellowgreen;
+background-color: #ed344d;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height: 100vh;
+height: 100%;
+
 
 form {
     display: flex;
@@ -129,9 +132,28 @@ form {
 }
 
 button {
+    background-color: #d0354a;
     width: 50%;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color:#FFFFFF;
 }
+img {
+    width: 250px;
+    margin-top: 15px;
+}
+a {
+    margin-bottom: 100px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif}
 `

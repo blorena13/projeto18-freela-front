@@ -1,24 +1,30 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { InfoContext } from "../context/InfoContext";
+import logo from "/home/lorena/projeto18-freela-front/src/assets/logo.png";
 
 export default function SignIn() {
 
-    const [form, setForm] = useState({ email: "", password: ""});
+    const [form, setForm] = useState({ email: "", password: "" });
     const navigate = useNavigate();
+    const { token, setToken } = useContext(InfoContext);
 
-    function handleForm(e){
-        setForm(({...form, [e.target.name]: e.target.value}));
+    function handleForm(e) {
+        setForm(({ ...form, [e.target.name]: e.target.value }));
     }
 
-    function submitForm(e){
+    function submitForm(e) {
         e.preventDefault();
 
         const urlPost = `${process.env.REACT_APP_API_URL}/signIn`;
-        const body = {email: form.email, password: form.password};
+        const body = { email: form.email, password: form.password };
 
         const promise = axios.post(urlPost, body);
         promise.then(res => {
+            setToken(res.data);
             navigate("/home/me");
         });
         promise.catch(err => {
@@ -28,7 +34,7 @@ export default function SignIn() {
     }
     return (
         <SignInContainer>
-            <p>Login/ imagem da logo</p>
+            <img src={logo}/>
             <form onSubmit={submitForm}>
                 <input
                     required
@@ -50,13 +56,13 @@ export default function SignIn() {
                 <button>Entrar</button>
             </form>
 
-            <Link to={`/signUp`}>Primeira vez? Cadastre-se</Link>
+            <p><Link to={`/signUp`}>Primeira vez? Cadastre-se</Link></p>
         </SignInContainer>
     )
 }
 
 const SignInContainer = styled.section`
-background-color: yellowgreen;
+background-color: #ed344d;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -73,9 +79,28 @@ form {
 }
 
 button {
+    background-color: #d0354a;
     width: 50%;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color:#FFFFFF;
 }
+
+img {
+    width: 250px;
+    
+}
+a {
+    margin-bottom: 100px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif}
 `

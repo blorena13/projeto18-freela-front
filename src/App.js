@@ -6,10 +6,12 @@ import NewPost from "./pages/NewPost";
 import Follows from "./pages/Follows";
 import Search from "./pages/Search";
 import Users from "./pages/Users";
+import { InfoProvider } from "./context/InfoContext";
 
 export default function App() {
   return (
    <BrowserRouter>
+   <InfoProvider>
    <Routes>
     <Route path="/signIn" element={<SignIn />} />
     <Route path="/signUp" element={<SignUp />} />
@@ -19,6 +21,7 @@ export default function App() {
     <Route path="/users" element={<Search />} />
     <Route path="/users/:id" element={<Users />} />
    </Routes>
+   </InfoProvider>
    </BrowserRouter>
   );
 }
