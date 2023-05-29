@@ -13,11 +13,11 @@ export default function App() {
    <BrowserRouter>
    <InfoProvider>
    <Routes>
-    <Route path="/signIn" element={<SignIn />} />
+    <Route path="/" element={<SignIn />} />
     <Route path="/signUp" element={<SignUp />} />
     <Route path="/home/me" element={<Profile />} />
     <Route path="/newPost" element={<NewPost />} />
-    <Route path="/:type" element={<Follows />} />
+    <Route path="/me/:type" element={<Follows />} />
     <Route path="/users" element={<Search />} />
     <Route path="/users/:id" element={<Users />} />
    </Routes>

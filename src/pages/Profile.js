@@ -6,26 +6,30 @@ import axios from "axios";
 import { useContext } from "react";
 import { InfoContext } from "../context/InfoContext";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import CardPost from "../components/CardPost";
 
 export default function Profile() {
 
     const [profile, setProfile] = useState([]);
-    const {token } = useContext(InfoContext);
+    const [post, setPost] = useState([]);
+    const { token } = useContext(InfoContext);
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const url = `${process.env.REACT_APP_API_URL}/profile`;
-    //     const config = {
-    //         headers:
-    //        { Authorization: `Bearer ${token}`}
-    //     }
+    useEffect(() => {
+        const url = `${process.env.REACT_APP_API_URL}/profile`;
+        const config = {
+            headers:
+                { Authorization: `Bearer ${token}` }
+        }
 
-    //     const promise = axios.get(url, config);
-    //     promise.then((res) => {
-    //         setProfile(res.data);
-    //     })
-    //     promise.catch(err => console.log(err.response.data.mensagem));
-    // }, []);
+        const promise = axios.get(url, config);
+        promise.then((res) => {
+            setProfile(res.data);
+            setPost(res.data.userPost);
+        })
+        promise.catch(err => console.log(err.response.data.mensagem));
+    }, []);
 
     return (
 
@@ -34,33 +38,34 @@ export default function Profile() {
             <FeedContainer>
                 <ProfileMe>
                     <span>
-                        <img />
+                        <img src={profile.profileImage} />
                         <div>
-                            <p>Fulano de tal</p>
-                            <p>biografia</p>
+                            <p>{profile.name}</p>
+                            <p>{profile.bio}</p>
 
                             <div>
-                                <button onClick={()=> navigate("/:type")}>Ver seguidores</button>
-                                <button>Ver quem eu sigo</button>
+                                <button onClick={() => navigate("/me/followers")}>Ver seguidores</button>
+                                <button onClick={() => navigate("/me/following")}>Ver quem eu sigo</button>
                             </div>
 
 
                         </div>
                     </span>
                 </ProfileMe>
-                <Feed>
-                    <span>
-                        <img />
-                        <div> <p>
-                        <ion-icon name="heart-outline"></ion-icon>
-                            pessoas curtiram sua foto</p>
-                            <p>hora e data</p>
-                        </div>
-                        <p> descrição adorei essa foto</p>
-                    </span>
-                </Feed>
 
+                {post.map(p => (
+                    <CardPost 
+                    likesCount={p.likesCount}
+                    photo= {p.photo}
+                    postedAt={p.postedAt}
+                    description={p.description}
+                    />
+                )) }
+                     
+               
             </FeedContainer>
+
+            <Footer />
         </ProfileContainer>
     )
 }
@@ -69,14 +74,17 @@ const ProfileContainer = styled.section`
 background-color: #FFFFFF;
 display: flex;
 justify-content: center;
+
+
 `
 const FeedContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-height: 100vh;
 width: 40%;
 margin-top: 90px;
+margin-bottom: 90px;
+
 `
 const ProfileMe = styled.div`
 border: 1px solid #f5f5f5;
@@ -108,6 +116,8 @@ div{
         font-family: 'Ubuntu', sans-serif;
         font-weight: 700;
     }
+
+   
     p:nth-child(2){
         font-size: 11px;
     }
@@ -134,59 +144,5 @@ div:nth-child(3) {
 
 `
 
-const Feed = styled.div`
-display: flex;
-margin-top: 15px;
-width: 100%;
 
 
-span {
-    display: flex;
-    width: 100%;
-    padding: 20px;
-    background-color:#ed344d;
-    flex-direction: column;
-    border-radius: 5px;
-
-    p{
-        font-size: 15px;
-        color: #FFFFFF;
-        font-family: 'Ubuntu', sans-serif;
-        font-weight: 500;
-    }
-
-}
-
-img {
-    width: 100%;
-    height: 420px;
-    background-color: pink;
-    border-radius: 5px;
-}
-
-div{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 5px;
-  
-    p{
-        font-size: 15px;
-        color: #FFFFFF;
-        font-family: 'Ubuntu', sans-serif;
-        font-weight: 500;
-        align-items: center;
-        display: flex;
-    }
-
-   
-    ion-icon {
-        margin-right: 5px;
-        align-items: center;
-        font-size: 18px;
-    }
-}
-
-
-`

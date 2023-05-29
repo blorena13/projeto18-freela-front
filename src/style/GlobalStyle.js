@@ -14,9 +14,9 @@ input {
         margin: 0px;
     } 
 }
-
-
-
+p::first-letter{
+        text-transform: uppercase;
+    }
 `;
 
 export default GlobalStyle;

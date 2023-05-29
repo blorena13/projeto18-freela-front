@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 export default function Users(){
 
@@ -44,6 +45,7 @@ export default function Users(){
                 </Feed>
 
             </FeedContainer>
+            <Footer />
         </UsersContainer>
     )
 }

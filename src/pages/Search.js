@@ -1,6 +1,7 @@
-import styled from "styled-components"
-import Header from "../components/Header"
-import CardSearch from "../components/CardSearch"
+import styled from "styled-components";
+import Header from "../components/Header";
+import CardSearch from "../components/CardSearch";
+import Footer from "../components/Footer";
 
 export default function Search() {
     return (
@@ -17,6 +18,7 @@ export default function Search() {
 
                 <CardSearch />
             </SearchContainer>
+            <Footer />
         </Container>
     )
 }

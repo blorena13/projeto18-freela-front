@@ -11,7 +11,7 @@ export default function Header(){
          <img src={nameLogo}/> 
         </div>
         
-        <button onClick={()=> navigate("/users")}>Pesquisar usuários <ion-icon name="search-circle-outline"></ion-icon> </button>
+        {/* <button onClick={()=> navigate("/users")}>Pesquisar usuários <ion-icon name="search-circle-outline"></ion-icon> </button> */}
         
         <ion-icon name="log-out-outline"></ion-icon>
       
@@ -25,6 +25,9 @@ background-color: #ed344d;
 width: 100%;
 height: 70px;
 position: fixed;
+top: 0;
+left: 0;
+z-index: 1;
 justify-content: space-between;
 align-items: center;
 border-bottom: 1px solid #f5f5f5;
@@ -37,7 +40,7 @@ div {
     margin-left: 20px;
 }
 
-ion-icon:nth-child(3){
+ion-icon{
     color: white;
     font-size: 30px;
     margin-right: 20px;
@@ -58,10 +61,6 @@ button{
     background-color: #ed344d;
     margin-right: 120px;
 
-    ion-icon{
-    color: white;
-    font-size: 30px;
-}
 }
 
 img{

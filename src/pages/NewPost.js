@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { InfoContext } from "../context/InfoContext";
 import { useState } from "react";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 export default function NewPost() {
 
@@ -27,7 +28,7 @@ export default function NewPost() {
             }
         }
         const promise = axios.post(urlPost, body, config);
-        promise.the(res => {
+        promise.then(res => {
             navigate("/home/me");
         })
         promise.catch(err => {
@@ -66,6 +67,7 @@ export default function NewPost() {
                     </form>
                 </span>
             </PostContainer>
+            <Footer />
         </>
 
     )

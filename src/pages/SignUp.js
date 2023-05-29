@@ -107,7 +107,7 @@ export default function SignUp() {
                 <button type="submit">Cadastrar</button>
             </form>
 
-            <Link to={`/signIn`}>Já possui uma conta? Entre agora!</Link>
+            <Link to={`/`}>Já possui uma conta? Entre agora!</Link>
         </SignUpContainer>
 
     )
@@ -143,6 +143,7 @@ button {
     margin-top: 10px;
     margin-bottom: 20px;
     color:#FFFFFF;
+    cursor: pointer;
 }
 img {
     width: 250px;

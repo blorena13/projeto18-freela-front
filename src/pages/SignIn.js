@@ -10,7 +10,7 @@ export default function SignIn() {
 
     const [form, setForm] = useState({ email: "", password: "" });
     const navigate = useNavigate();
-    const { token, setToken } = useContext(InfoContext);
+    const {  setToken } = useContext(InfoContext);
 
     function handleForm(e) {
         setForm(({ ...form, [e.target.name]: e.target.value }));
@@ -24,7 +24,7 @@ export default function SignIn() {
 
         const promise = axios.post(urlPost, body);
         promise.then(res => {
-            setToken(res.data);
+            setToken(res.data.token);
             navigate("/home/me");
         });
         promise.catch(err => {
@@ -89,6 +89,7 @@ button {
     font-size: 20px;
     margin-bottom: 20px;
     color:#FFFFFF;
+    cursor: pointer;
 }
 
 img {

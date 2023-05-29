@@ -6,26 +6,29 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { InfoContext } from "../context/InfoContext";
 import axios from "axios";
+import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
 
 export default function Follows() {
 
     const [follows, setFollows] = useState([]);
-    const {token } = useContext(InfoContext);
+    const { token } = useContext(InfoContext);
+    const { type } = useParams();
 
-    // useEffect(() => {
-    //     const url = `${process.env.REACT_APP_API_URL}/me/:type`;
-    //     const config = {
-    //         headers:
-    //             { Authorization: `Bearer ${token}` }
-    //     }
+    useEffect(() => {
+        const url = `${process.env.REACT_APP_API_URL}/me/${type}`;
+        const config = {
+            headers:
+                { Authorization: `Bearer ${token}` }
+        }
 
-    //     const promise = axios.get(url, config);
-    //     promise.then((res) => {
-    //         setFollows(res.data);
-    //     })
-    //     promise.catch(err => console.log(err.response.data.mensagem));
+        const promise = axios.get(url, config);
+        promise.then((res) => {
+            setFollows(res.data);
+        })
+        promise.catch(err => console.log(err.response.data.mensagem));
 
-    // }, []);
+    }, []);
 
     return (
         <Container>
@@ -35,6 +38,7 @@ export default function Follows() {
 
                 <CardFollows />
             </FollowsContainer>
+            <Footer />
         </Container>
     )
 }
