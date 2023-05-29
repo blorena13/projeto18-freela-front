@@ -2,8 +2,13 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import CardSearch from "../components/CardSearch";
 import Footer from "../components/Footer";
+import { useEffect } from "react";
 
 export default function Search() {
+
+    // useEffect(()=> {
+    //     const url = 
+    // })
     return (
         <Container>
             <Header />
