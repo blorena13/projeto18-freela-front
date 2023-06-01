@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import logo from "/home/lorena/projeto18-freela-front/src/assets/logoPink.png";
-import nameLogo from "/home/lorena/projeto18-freela-front/src/assets/namePink.png";
+import logo from "../assets/logoPink.png";
+import nameLogo from "../assets/namePink.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Header(){
