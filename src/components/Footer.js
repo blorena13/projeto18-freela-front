@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoIcon from "/home/lorena/projeto18-freela-front/src/assets/logoIcon.png";
+import logoIcon from "../assets/logoIcon.png";
 import { useNavigate } from "react-router-dom";
 
 
