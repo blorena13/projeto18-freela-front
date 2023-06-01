@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import logo from "/home/lorena/projeto18-freela-front/src/assets/logo.png";
+import logo from "../assets/logo.png";
 
 export default function SignUp() {
 
@@ -119,7 +119,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height: 100%;
+height: 100vh;
+width: 100%;
 
 
 form {

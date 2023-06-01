@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { InfoContext } from "../context/InfoContext";
-import logo from "/home/lorena/projeto18-freela-front/src/assets/logo.png";
+import logo from "../assets/logo.png";
 
 export default function SignIn() {
 

@@ -4,14 +4,12 @@ import nameLogo from "/home/lorena/projeto18-freela-front/src/assets/namePink.pn
 import { useNavigate } from "react-router-dom";
 
 export default function Header(){
-    const navigate = useNavigate();
+
     return (
     <HeaderContainer>
        <div> <img src={logo}/>
          <img src={nameLogo}/> 
         </div>
-        
-        {/* <button onClick={()=> navigate("/users")}>Pesquisar usuários <ion-icon name="search-circle-outline"></ion-icon> </button> */}
         
         <ion-icon name="log-out-outline"></ion-icon>
       
